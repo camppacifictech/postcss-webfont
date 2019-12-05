@@ -254,20 +254,22 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
     [
       {
         prefix: useClassNamePrefix,
+        pseudo: null,
+      },
+      {
+        prefix: useClassNamePrefix,
         pseudo: 'before',
       },
       {
-        prefix: `${useClassNamePrefix}${useClassNamePrefixBefore}`,
-        pseudo: 'before',
-      },
-      {
-        prefix: `${useClassNamePrefix}${useClassNamePrefixAfter}`,
+        prefix: useClassNamePrefix,
         pseudo: 'after',
       },
     ].forEach((classNamingConvention) => {
-
+      const selector = classNamingConvention.pseudo
+        ? `.${classNamingConvention.pseudo}\:${classNamingConvention.prefix}${useClassNameFont}-${glyph.name}::${classNamingConvention.pseudo}`
+        : `.${classNamingConvention.prefix}${useClassNameFont}-${glyph.name}`;
       const fontRule = postcss.rule({
-        selector: `.${classNamingConvention.prefix}${iconFont.fontName}-${glyph.name}::${classNamingConvention.pseudo}`,
+        selector: selector,
       });
       fontRule.append({
         prop: 'content',
