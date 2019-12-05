@@ -17,8 +17,7 @@ const defaultOptions = {
   formats: ['eot', 'woff', 'ttf'],
   verticalAlign: 'middle',
   classNamePrefix: 'iconfont',
-  classNamePrefixBefore: 'before',
-  classNamePrefixAfter: 'after',
+  classNameFonts: {},
   cachebuster: 'hash',
   cachebusterFixed: '',
 

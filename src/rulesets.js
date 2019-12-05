@@ -196,16 +196,14 @@ const createWebFontRuleSets = (iconFont, rulesets, glyphs, options) => {
   const useClassNamePrefix = options.classNamePrefix ? `${options.classNamePrefix}-` : '';
   const useClassNamePrefixBefore = options.classNamePrefixBefore ? `${options.classNamePrefixBefore}-` : '';
   const useClassNamePrefixAfter = options.classNamePrefixAfter ? `${options.classNamePrefixAfter}-` : '';
+  let useClassNameFont = options.classNameFonts && options.classNameFonts[iconFont.fontName] ? options.classNameFonts[iconFont.fontName] : iconFont.fontName;
+  useClassNameFont = useClassNameFont ? `${useClassNameFont}-` : '';
 
   // append base ruleset
   const iconRule = postcss.rule({
     selectors: [
-      `[class^='${useClassNamePrefix}${iconFont.fontName}-']::before`,
-      `[class*=' ${useClassNamePrefix}${iconFont.fontName}-']::before`,
-      `[class^='${useClassNamePrefix}${useClassNamePrefixBefore}${iconFont.fontName}-']::before`,
-      `[class*=' ${useClassNamePrefix}${useClassNamePrefixBefore}${iconFont.fontName}-']::before`,
-      `[class^='${useClassNamePrefix}${useClassNamePrefixAfter}${iconFont.fontName}-']::after`,
-      `[class*=' ${useClassNamePrefix}${useClassNamePrefixAfter}${iconFont.fontName}-']::after`,
+      `[class^='${useClassNamePrefix}${useClassNameFont}-']`,
+      `[class*=' ${useClassNamePrefix}${useClassNameFont}-']`,
     ]
   });
   iconRule.append({
