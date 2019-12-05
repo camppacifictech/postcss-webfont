@@ -129,22 +129,13 @@ Type: `String`
 Default: `iconfont`
 
 
-### classNamePrefixBefore
+### classNameFonts
 
-The generating class name prefix for before pseudo element.
+A map to customise the font name portion of the generated classes, keyed by font-family name.
 
-Type: `String`
+Type: `Object`
 
-Default: `before`
-
-
-### classNamePrefixAfter
-
-The generating class name prefix for after pseudo element.
-
-Type: `String`
-
-Default: `after`
+Default: `{ }`
 
 
 ### cachebuster
@@ -222,9 +213,7 @@ style.css
   font-display: swap;
 }
 
-[class^='iconfont-font-awesome-']::before, [class*=' iconfont-font-awesome-']::before,
-[class^='iconfont-before-font-awesome-']::before, [class*=' iconfont-before-font-awesome-']::before,
-[class^='iconfont-after-font-awesome-']::after, [class*=' iconfont-after-font-awesome-']::after {
+[class^='iconfont-font-awesome-'], [class*=' iconfont-font-awesome-'] {
   font-family: 'font-awesome', sans-serif;
   speak: none;
   font-style: normal;
@@ -236,13 +225,13 @@ style.css
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.iconfont-font-awesome-arrow-up-left::before {
+.iconfont-font-awesome-arrow-up-left {
   content: '\EA01';
 }
-.iconfont-before-font-awesome-arrow-up-left::before {
+.before\:iconfont-font-awesome-arrow-up-left::before {
   content: '\EA01';
 }
-.iconfont-after-font-awesome-arrow-up-right::after {
+.after\:iconfont-font-awesome-arrow-up-right::after {
   content: '\EA02';
 }
 ```
